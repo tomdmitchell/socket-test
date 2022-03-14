@@ -7,93 +7,165 @@
     <title>Document</title>
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <script>
-      var socket = io();
-      document.addEventListener('click', () => {
-        console.log('clicking');
-        socket.emit('click listener', 'click....');
-      });
-      //listen for emits
-      socket.on('click listener', (msg) => {
-        console.log(msg);
-      });
-    </script>
   </head>
   <body>
     <div class="grid-container">
       <!--Row-->
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
+      <div id="a1" class="grid-square"></div>
+      <div id="a2" class="grid-square"></div>
+      <div id="a3" class="grid-square"></div>
+      <div id="a4" class="grid-square"></div>
+      <div id="a5" class="grid-square"></div>
+      <div id="a6" class="grid-square"></div>
+      <div id="a7" class="grid-square"></div>
+      <div id="a8" class="grid-square"></div>
       <!--Row-->
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
+      <div id="a9" class="grid-square"></div>
+      <div id="a10" class="grid-square"></div>
+      <div id="a11" class="grid-square"></div>
+      <div id="a12" class="grid-square"></div>
+      <div id="a13" class="grid-square"></div>
+      <div id="a14" class="grid-square"></div>
+      <div id="a15" class="grid-square"></div>
+      <div id="a16" class="grid-square"></div>
       <!--Row-->
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
+      <div id="a17" class="grid-square"></div>
+      <div id="a18" class="grid-square"></div>
+      <div id="a19" class="grid-square"></div>
+      <div id="a20" class="grid-square"></div>
+      <div id="a21" class="grid-square"></div>
+      <div id="a22" class="grid-square"></div>
+      <div id="a23" class="grid-square"></div>
+      <div id="a24" class="grid-square"></div>
       <!--Row-->
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
+      <div id="a25" class="grid-square"></div>
+      <div id="a26" class="grid-square"></div>
+      <div id="a27" class="grid-square"></div>
+      <div id="a28" class="grid-square"></div>
+      <div id="a29" class="grid-square"></div>
+      <div id="a30" class="grid-square"></div>
+      <div id="a31" class="grid-square"></div>
+      <div id="a32" class="grid-square"></div>
       <!--Row-->
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
+      <div id="a33" class="grid-square"></div>
+      <div id="a34" class="grid-square"></div>
+      <div id="a35" class="grid-square"></div>
+      <div id="a36" class="grid-square"></div>
+      <div id="a37" class="grid-square"></div>
+      <div id="a38" class="grid-square"></div>
+      <div id="a39" class="grid-square"></div>
+      <div id="a40" class="grid-square"></div>
       <!--Row-->
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
+      <div id="a41" class="grid-square"></div>
+      <div id="a42" class="grid-square"></div>
+      <div id="a43" class="grid-square"></div>
+      <div id="a44" class="grid-square"></div>
+      <div id="a45" class="grid-square"></div>
+      <div id="a46" class="grid-square"></div>
+      <div id="a47" class="grid-square"></div>
+      <div id="a48" class="grid-square"></div>
       <!--Row-->
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
+      <div id="a49" class="grid-square"></div>
+      <div id="a50" class="grid-square"></div>
+      <div id="a51" class="grid-square"></div>
+      <div id="a52" class="grid-square"></div>
+      <div id="a53" class="grid-square"></div>
+      <div id="a54" class="grid-square"></div>
+      <div id="a55" class="grid-square"></div>
+      <div id="a56" class="grid-square"></div>
       <!--Row-->
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
-      <div class="grid-square"></div>
+      <div id="a57" class="grid-square"></div>
+      <div id="a58" class="grid-square"></div>
+      <div id="a59" class="grid-square"></div>
+      <div id="a60" class="grid-square"></div>
+      <div id="a61" class="grid-square"></div>
+      <div id="a62" class="grid-square"></div>
+      <div id="a63" class="grid-square"></div>
+      <div id="a64" class="grid-square"></div>
     </div>
-    <div class="message-container"></div>
+    <div class="title-container">Click more squares than your opponent</div>
+    <div class="message-container">
+      <div class="text-inner"></div>
+    </div>
+    <script>
+      document.querySelector('body').style.width = `${
+        document.querySelector('body').clientHeight
+      }px`;
+    </script>
+    <script>
+      //userId
+      if (!localStorage.userId) {
+        localStorage.setItem('userId', Math.random().toString(24) + new Date());
+      }
+      console.log('local storage: ', localStorage);
+      var socket = io();
+      //set login
+      socket.emit('userLogin', localStorage.getItem('userId'));
+      //user counter
+      socket.on('user data', function (msg) {
+        const messageContainerText = document.querySelector('.message-container .text-inner');
+        messageContainerText.textContent = `${msg.userCount} players connected...`;
+        if (msg.userCount === 2) {
+          setTimeout(() => {
+            setTimeout(() => (messageContainerText.textContent = `Game starts in 3`), 2000);
+            setTimeout(() => (messageContainerText.textContent = `Game starts in 2`), 3000);
+            setTimeout(() => (messageContainerText.textContent = `Game starts in 1`), 4000);
+            setTimeout(() => (messageContainerText.textContent = `Go!`), 5000);
+          }, 500);
+        }
+      });
+      //user id
+      socket.on('user id', function (msg) {
+        localStorage.setItem('socketUserId', msg.id);
+        localStorage.setItem('socketUserColour', msg.colour);
+        console.log('user id: ', msg);
+      });
+      //square click handler - send
+      document.addEventListener('click', (e) => {
+        if (e.target.className === 'grid-square') {
+          if (
+            document.querySelector(`#${e.target.id}`).style.backgroundColor !==
+            localStorage.socketUserColour
+          ) {
+            document.querySelector(
+              `#${e.target.id}`
+            ).style.backgroundColor = `${localStorage.socketUserColour}`;
+            socket.emit('click handler', {
+              id: e.target.id,
+              colour: localStorage.socketUserColour,
+            });
+          } else {
+            document.querySelector(`#${e.target.id}`).style.backgroundColor = ``;
+            socket.emit('click handler', { id: e.target.id, colour: '' });
+          }
+        }
+      });
+      //square click handler - receive
+      socket.on('click handler', function (msg) {
+        document.querySelector(`#${msg.id}`).style.backgroundColor = `${msg.colour}`;
+        countSquares();
+      });
+
+      //receive game win
+      socket.on('game over', function (msg) {
+        alert(`*****${msg.winColour} won!*****`)
+      });
+
+      const countSquares = () => {
+        const allSquares = Array.from(document.querySelectorAll('.grid-square'));
+        console.log(allSquares);
+        const redSquares = allSquares.filter((square) => square.style.backgroundColor == 'red');
+        const greenSquares = allSquares.filter((square) => square.style.backgroundColor == 'green');
+        if (redSquares.length + greenSquares.length === 64) {
+          if (redSquares.length > greenSquares.length) {
+            console.log('red won');
+            socket.emit('game over', { winColour: 'red' });
+          } else {
+            console.log('green won');
+            socket.emit('game over', { winColour: 'green' });
+          }
+        }
+      };
+    </script>
   </body>
 </html>
