@@ -148,6 +148,7 @@
 
       //receive game win
       socket.on('game over', function (msg) {
+        console.log('game over message')
         alert(`*****${msg.winColour} won!*****`)
       });
 
@@ -159,10 +160,14 @@
         if (redSquares.length + greenSquares.length === 64) {
           if (redSquares.length > greenSquares.length) {
             console.log('red won');
-            socket.emit('game over', { winColour: 'red' });
+            if (localStorage.socketUserColour === 'red') {
+              socket.emit('game over', { winColour: 'red' });
+            }
           } else {
             console.log('green won');
+            if (localStorage.socketUserColour === 'green') {
             socket.emit('game over', { winColour: 'green' });
+            }
           }
         }
       };
