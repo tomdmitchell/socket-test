@@ -19,7 +19,8 @@ app.use(express.static(__dirname + '/public'));
 io.on('connection', (socket) => {
   //user connect listener
   userCount++;
-  io.emit('user data', { userCount: userCount }); // This will emit the event to all connected sockets
+  //user data - emit to all sockets
+  io.emit('user data', { userCount: userCount });
   socket.on('userLogin', (data) => {
     const idsUsed = userInfo.map((info) => info.id);
     if (!idsUsed.includes(data)) {
@@ -27,9 +28,11 @@ io.on('connection', (socket) => {
       const coloursUsed = userInfo.map((info) => info.colour);
       if (coloursUsed.includes('green')) {
         userInfo.push({ id: data, colour: 'red' });
+        //user id
         socket.emit('user id', { id: data, colour: 'red' });
       } else {
         userInfo.push({ id: data, colour: 'green' });
+        //user id
         socket.emit('user id', { id: data, colour: 'green' });
       }
     }
@@ -42,15 +45,15 @@ io.on('connection', (socket) => {
   //disconnect listener
   socket.on('disconnect', () => {
     userCount--;
-    io.emit('user data', { userCount: userCount }); // This will emit the event to all connected sockets
+    io.emit('user data', { userCount: userCount });
   });
 
-  //click listener
+  //click handler
   socket.on('click handler', (msg) => {
     console.log(msg);
     io.emit('click handler', msg);
   });
-  //game win
+  //game over
   socket.on('game over', (msg) => {
     console.log(msg);
     io.emit('game over', msg);

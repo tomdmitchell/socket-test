@@ -57,9 +57,7 @@
       <div class="text-inner"></div>
     </div>
     <script>
-      document.querySelector('body').style.width = `${
-        document.querySelector('body').clientHeight
-      }px`;
+      document.querySelector('body').style.width = `${document.querySelector('body').clientHeight}px`;
     </script>
     <script>
       //userId
@@ -67,61 +65,45 @@
         localStorage.setItem('userId', Math.random().toString(24) + new Date());
       }
       console.log('local storage: ', localStorage);
+      //socket instance
       var socket = io();
-      //set login
+      //SOCKET EMIT
       socket.emit('userLogin', localStorage.getItem('userId'));
-      //user counter
-      socket.on('user data', function (msg) {
-        const messageContainerText = document.querySelector('.message-container .text-inner');
-        messageContainerText.textContent = `${msg.userCount} players connected...`;
-        if (msg.userCount === 2) {
-          const allSquares = Array.from(document.querySelectorAll('.grid-square'));
-          allSquares.forEach(square => square.style.backgroundColor = '') 
-
-          setTimeout(() => {
-            setTimeout(() => (messageContainerText.textContent = `Game starts in 3`), 2000);
-            setTimeout(() => (messageContainerText.textContent = `Game starts in 2`), 3000);
-            setTimeout(() => (messageContainerText.textContent = `Game starts in 1`), 4000);
-            setTimeout(() => (messageContainerText.textContent = `Go!`), 5000);
-          }, 500);
-        }
+      //user data
+      socket.on('user data', (msg) => {
+        handleUsers(msg);
       });
       //user id
-      socket.on('user id', function (msg) {
-        localStorage.setItem('socketUserId', msg.id);
-        localStorage.setItem('socketUserColour', msg.colour);
-        console.log('user id: ', msg);
+      socket.on('user id', (msg) => {
+        setUserId(msg);
       });
-      //square click handler - send
+      //square click handler
       document.addEventListener('click', (e) => {
         if (e.target.className === 'grid-square') {
-          if (
-            document.querySelector(`#${e.target.id}`).style.backgroundColor !==
-            localStorage.socketUserColour
-          ) {
-            document.querySelector(
-              `#${e.target.id}`
-            ).style.backgroundColor = `${localStorage.socketUserColour}`;
+          if (document.querySelector(`#${e.target.id}`).style.backgroundColor !== localStorage.socketUserColour) {
+            document.querySelector(`#${e.target.id}`).style.backgroundColor = `${localStorage.socketUserColour}`;
+            //click handler
             socket.emit('click handler', {
               id: e.target.id,
-              colour: localStorage.socketUserColour,
+              colour: localStorage.socketUserColour
             });
           } else {
             document.querySelector(`#${e.target.id}`).style.backgroundColor = ``;
+            //click handler
             socket.emit('click handler', { id: e.target.id, colour: '' });
           }
         }
       });
-      //square click handler - receive
-      socket.on('click handler', function (msg) {
+      //click handler
+      socket.on('click handler', (msg) => {
         document.querySelector(`#${msg.id}`).style.backgroundColor = `${msg.colour}`;
         countSquares();
       });
 
-      //receive game win
-      socket.on('game over', function (msg) {
-        console.log('game over message')
-        alert(`*****${msg.winColour} won!*****`)
+      //game over
+      socket.on('game over', (msg) => {
+        console.log('game over message');
+        alert(`*****${msg.winColour} won!*****`);
       });
 
       const countSquares = () => {
@@ -138,10 +120,33 @@
           } else {
             console.log('green won');
             if (localStorage.socketUserColour === 'green') {
-            socket.emit('game over', { winColour: 'green' });
+              socket.emit('game over', { winColour: 'green' });
             }
           }
         }
+      };
+
+      const handleUsers = (msg) => {
+        const messageContainerText = document.querySelector('.message-container .text-inner');
+        messageContainerText.textContent = `${msg.userCount} players connected...`;
+        if (msg.userCount === 2) {
+          setTimeout(() => {
+            setTimeout(() => (messageContainerText.textContent = `Game starts in 3`), 2000);
+            setTimeout(() => (messageContainerText.textContent = `Game starts in 2`), 3000);
+            setTimeout(() => (messageContainerText.textContent = `Game starts in 1`), 4000);
+            setTimeout(() => {
+              const allSquares = Array.from(document.querySelectorAll('.grid-square'));
+              allSquares.forEach((square) => (square.style.backgroundColor = ''));
+              messageContainerText.textContent = `Go!`;
+            }, 5000);
+          }, 500);
+        }
+      };
+
+      const setUserId = (msg) => {
+        localStorage.setItem('socketUserId', msg.id);
+        localStorage.setItem('socketUserColour', msg.colour);
+        console.log('user id: ', msg);
       };
     </script>
   </body>
