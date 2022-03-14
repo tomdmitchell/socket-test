@@ -51,37 +51,6 @@
       <div id="a34" class="grid-square"></div>
       <div id="a35" class="grid-square"></div>
       <div id="a36" class="grid-square"></div>
-      <div id="a37" class="grid-square"></div>
-      <div id="a38" class="grid-square"></div>
-      <div id="a39" class="grid-square"></div>
-      <div id="a40" class="grid-square"></div>
-      <!--Row-->
-      <div id="a41" class="grid-square"></div>
-      <div id="a42" class="grid-square"></div>
-      <div id="a43" class="grid-square"></div>
-      <div id="a44" class="grid-square"></div>
-      <div id="a45" class="grid-square"></div>
-      <div id="a46" class="grid-square"></div>
-      <div id="a47" class="grid-square"></div>
-      <div id="a48" class="grid-square"></div>
-      <!--Row-->
-      <div id="a49" class="grid-square"></div>
-      <div id="a50" class="grid-square"></div>
-      <div id="a51" class="grid-square"></div>
-      <div id="a52" class="grid-square"></div>
-      <div id="a53" class="grid-square"></div>
-      <div id="a54" class="grid-square"></div>
-      <div id="a55" class="grid-square"></div>
-      <div id="a56" class="grid-square"></div>
-      <!--Row-->
-      <div id="a57" class="grid-square"></div>
-      <div id="a58" class="grid-square"></div>
-      <div id="a59" class="grid-square"></div>
-      <div id="a60" class="grid-square"></div>
-      <div id="a61" class="grid-square"></div>
-      <div id="a62" class="grid-square"></div>
-      <div id="a63" class="grid-square"></div>
-      <div id="a64" class="grid-square"></div>
     </div>
     <div class="title-container">Click more squares than your opponent</div>
     <div class="message-container">
@@ -106,6 +75,9 @@
         const messageContainerText = document.querySelector('.message-container .text-inner');
         messageContainerText.textContent = `${msg.userCount} players connected...`;
         if (msg.userCount === 2) {
+          const allSquares = Array.from(document.querySelectorAll('.grid-square'));
+          allSquares.forEach(square => square.style.backgroundColor = '') 
+
           setTimeout(() => {
             setTimeout(() => (messageContainerText.textContent = `Game starts in 3`), 2000);
             setTimeout(() => (messageContainerText.textContent = `Game starts in 2`), 3000);
@@ -157,7 +129,7 @@
         console.log(allSquares);
         const redSquares = allSquares.filter((square) => square.style.backgroundColor == 'red');
         const greenSquares = allSquares.filter((square) => square.style.backgroundColor == 'green');
-        if (redSquares.length + greenSquares.length === 64) {
+        if (redSquares.length + greenSquares.length === 36) {
           if (redSquares.length > greenSquares.length) {
             console.log('red won');
             if (localStorage.socketUserColour === 'red') {

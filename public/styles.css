@@ -28,7 +28,7 @@ body {
   display: grid;
   top: 5%;
   /* border: 1px solid black; */
-  grid-template-columns: repeat(8, 12.5%);
+  grid-template-columns: repeat(6, 16.6%);
 }
 
 .grid-square {
